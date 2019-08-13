@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <link rel="stylesheet" href="css/mui.min.css" />
+    <link rel="stylesheet" href="./less/index.css">
+    <link rel="stylesheet" href="./css/icons-extra.css">
+    <script src="js/mui.js"></script>
+    <script src="./js/vue.min.js"></script>
+    <script src="./js/zepto.min.js"></script>
+    <script>
+        mui.init();
+    </script>
+</head>
+
+<body>
+    <div id="app">
+        <header id="header" class="mui-bar mui-bar-nav">
+            <h1 class="mui-title">微信</h1>
+            <!--添加按钮-->
+            <a href="#popover" class="mui-icon mui-icon-plus" id="add"></a>
+            <!--查询按钮-->
+            <a class="mui-icon mui-icon-search" id="search"></a>
+        </header>
+        <!-- 点加号显示的弹框 -->
+        <div id="popover" class="mui-popover">
+            <ul class="mui-table-view">
+                <li class="mui-table-view-cell" index="0">
+                    <a href="#"><span class="mui-icon-extra mui-icon-extra-peoples"></span>发起群聊</a>
+                </li>
+
+                <li class="mui-table-view-cell" index="1">
+                    <a href="#"><span class="mui-icon-extra mui-icon-extra-addpeople"></span>添加好友</a>
+                </li>
+
+                <li class="mui-table-view-cell" index="2">
+                    <a href="#"><span class="mui-icon-extra mui-icon-extra-sweep"></span>扫一扫</a>
+                </li>
+
+                <li class="mui-table-view-cell" index="3">
+                    <a href="#"><span class="mui-icon-extra mui-icon-extra-prech"></span>收付款</a>
+                </li>
+
+                <li class="mui-table-view-cell" index="4">
+                    <a href="#"><span class="mui-icon mui-icon-email"></span>帮助与反馈</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 底部导航 -->
+        <nav class="mui-bar mui-bar-tab" id="nav">
+            <a class="mui-tab-item mui-active" href="#tabbar1">
+                <span class="mui-icon mui-icon-chatbubble" index='0'>
+                    <span class="mui-badge mui-badge-danger">{{msgTotal}}</span>
+                </span>
+                <span class="mui-tab-label">微信</span>
+            </a>
+            <a class="mui-tab-item" href="#tabbar2">
+                <span class="mui-icon iconfont icon-tongxunlu" index='1'></span>
+                <span class="mui-tab-label">通讯录</span>
+            </a>
+            <a class="mui-tab-item" href="#tabbar3">
+                <span class="mui-icon iconfont icon-faxian" index='2'></span>
+                <span class="mui-tab-label">发现</span>
+            </a>
+            <a class="mui-tab-item" href="#tabbar4">
+                <span class="mui-icon iconfont icon-wode" index='3'></span>
+                <span class="mui-tab-label">我</span>
+            </a>
+        </nav>
+        <!-- 主体 -->
+        <div class="mui-content">
+            <!-- 聊天列表 -->
+            <div id="tabbar1" class="mui-control-content mui-active">
+                <ul class="mui-table-view">
+                    <li class="mui-table-view-cell mui-media" v-for="(item,index) in data1" :key="index"
+                        @click="clickDialogue(item)">
+                        <a href="javascript:;">
+                            <img class="mui-media-object mui-pull-left" :src="item.img">
+                            <span class="mui-badge mui-badge-danger" v-text="item.count" v-if="item.count>0"></span>
+                            <div class="mui-media-body">
+                                <span class="name" v-text="item.title">安徽旅游群</span>
+                                <span class="time" v-text="item.time">10:59</span>
+                                <p class='mui-ellipsis' v-text="item.desc">能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>
+                            </div>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+            <!-- 通讯录 -->
+            <div id="tabbar2" class="mui-control-content">
+                2
+            </div>
+            <!-- 发现 -->
+            <div id="tabbar3" class="mui-control-content">
+                3
+            </div>
+            <!-- 我 -->
+            <div id="tabbar4" class="mui-control-content">
+                4
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/index.js"></script>
+    <script>
+        // 切换顶部标题
+        $('#nav').on('click', 'a', function () {
+            let txt = $(this).children('.mui-tab-label').text();
+            $('#header h1').text(txt);
+        })
+        
+        $('#popover ul').on('click','li a', function () {
+           mui.toast("功能暂未开发", {duration: 'short',type: 'div'})
+            $('#popover').removeClass('mui-active');
+            $('.mui-backdrop').hide();
+        });
+    </script>
+</body>
+
+</html>
