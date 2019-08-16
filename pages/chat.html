@@ -12,9 +12,9 @@
     <script src="../js/mui.min.js"></script>
     <script src="../js/zepto.min.js"></script>
     <script>
+        let chat = JSON.parse(sessionStorage.getItem('chat'));
         //mui插件初始化
         mui.ready(function (param) {
-            let chat = JSON.parse(sessionStorage.getItem('chat'));
             console.log(chat);
             $('.mui-title').text(chat.title)
         })   
@@ -32,25 +32,96 @@
 
         <div class="mui-content">
             <div id='msg-list'>
+                <!-- 列表 -->
+                <div class="msg-item" v-for="(item,index) in chatList" :key="index"
+                    :class="{'msg-item-self':item.sender===1}">
+                    <img :src="item.headImg" alt="头像" class="msg-user-img msg-user" v-if="item.sender===0">
+                    <i class="msg-user mui-icon mui-icon-person" v-if="item.sender===1"></i>
+                    <div class="msg-content">
+                        <div class="msg-content-inner">
+                            {{item.content}}
+                        </div>
+                        <div class="msg-content-arrow"></div>
+                    </div>
+                </div>
             </div>
         </div>
         <footer>
-            <div class="footer-left">
-                <span id='msg-image' class="mui-icon iconfont icon-yuyin"></span>
+            <div class="footer-left" @click="changeInputType()">
+                <span class="mui-icon iconfont icon-yuyin" v-show="inputType==1"></span>
+                <span class="mui-icon iconfont icon-jianpan" v-show="inputType==2"></span>
             </div>
             <div class="footer-center">
                 <!-- 86%宽变化 -->
-                <textarea id='msg-text' type="text" class='input-text' v-model="text"></textarea>
-                <button id='msg-sound' type="button" class='input-sound' style="display: none;">按住说话</button>
+                <textarea id='msg-text' type="text" class='input-text' v-model="text" v-show="inputType==1"></textarea>
+                <!-- <div id="msg-text" contenteditable class='input-text' v-show="inputType==1"></div> -->
+                <button id='msg-sound' type="button" class='input-sound' v-show="inputType==2">按住 说话</button>
             </div>
             <label for="" class="footer-right">
                 <i id='face' class="mui-icon iconfont icon-biaoqing"></i>
                 <i id='more' class="mui-icon mui-icon-plus" style="font-size: 28px;"></i>
-                <button type="button" class="mui-btn mui-btn-success send-btn"
-                    @click="sendMsg"
-                >发送</button>
+                <button type="button" class="mui-btn mui-btn-success send-btn" @click="sendMsg">发送</button>
             </label>
         </footer>
+        <!-- 九宫格 -->
+        <div id="Gallery" class="mui-slider" style="height: 220px; display: none;">
+				<div class="mui-slider-group">
+					<div class="mui-slider-item">
+						<ul class="mui-table-view mui-grid-view ">
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<span class="mui-icon mui-icon-location"></span>
+									<div class="mui-media-body">location</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<span class="mui-icon mui-icon-search"></span>
+									<div class="mui-media-body">Search</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<span class="mui-icon mui-icon-phone"></span>
+									<div class="mui-media-body">Phone</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<span class="mui-icon mui-icon-gear"></span>
+									<div class="mui-media-body">Setting</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<span class="mui-icon mui-icon-info"></span>
+									<div class="mui-media-body">about</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<span class="mui-icon mui-icon-more"></span>
+									<div class="mui-media-body">more</div>
+								</a>
+							</li>
+						</ul>
+					</div>
+					<div class="mui-slider-item">
+						<ul class="mui-table-view mui-grid-view ">
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+								<a href="#">
+									<span class="mui-icon mui-icon-search"></span>
+									<div class="mui-media-body">Search</div>
+								</a>
+							</li>
+							
+						</ul>
+					</div>
+				</div>
+				<div class="mui-slider-indicator" style="bottom: -2px;">
+					<div class="mui-indicator mui-active"></div>
+					<div class="mui-indicator"></div>
+				</div>
     </div>
 
     <!-- <div id='sound-alert' class="rprogress">
@@ -60,23 +131,79 @@
     </div> -->
     <script src="./../js/vue.min.js"></script>
     <script>
+        $('#msg-text').on('DOMNodeInserted', function () {
+            console.log(333);
+            
+            let _html = $(this).html();
+            console.log(_html);
+            let str = _html.replace(/(^\s*)|(\s*$)/g, "");
+            if (str.length > 0) {
+                $('.input-text').css('width', '80%');
+                $('.footer-right').css('width', '104px');
+                $('.send-btn').show();
+                $('#more').hide();
+            } else {
+                $('.input-text').css('width', '90%');
+                $('.footer-right').css('width', '80px');
+                $('.send-btn').hide();
+                $('#more').show();
+            }
+
+        })
         new Vue({
             el: '#app',
             data() {
                 return {
-                    text: ''
+                    text: '',
+                    inputType: 1, // 1文字 2语音
+                    chatList: [ //聊天列表
+                        {
+                            sender: 0, // 0 对方  1自己
+                            content: 'hello 欢迎聊天', //聊天内容
+                            headImg: `../${chat.img}`
+                        }
+                    ]
                 }
             },
             methods: {
-              sendMsg(){
-                  alert(`(发送功能还未写)你发送的消息为'${this.text}'`);
-                  this.text = '';
-              }  
+                sendMsg() {
+                    // alert(`(发送功能还未写)你发送的消息为'${this.text}'`);
+                    this.chatList.push({
+                        sender: 1,
+                        content: this.text
+                    })
+                    this.text = '';
+                    var apiUrl = 'http://www.tuling123.com/openapi/api';
+                    $.getJSON('http://www.tuling123.com/openapi/api', {
+                        "key": 'eb043cb39f84453b9140ba7d1f55f682',
+                        "info": "你好",
+                        "userid": Math.random()
+                    }, res => {
+                        console.log(res);
+                        this.chatList.push({
+                            sender: 0,
+                            content: res.text,
+                            headImg: `../${chat.img}`
+                        })
+                    });
+
+                },
+                changeInputType() {
+                    if (this.inputType === 1) {
+                        this.inputType = 2; //切换到语音
+                    } else {
+                        this.inputType = 1; //切换到文字
+                        document.querySelector('#msg-sound').focus()
+                    }
+
+                }
             },
             watch: {
                 // 监听输入框内容
                 text(v) {
-                    if (v.length > 0) {
+                    let str = v.replace(/(^\s*)|(\s*$)/g, "");
+
+                    if (str.length > 0) {
                         $('.input-text').css('width', '80%');
                         $('.footer-right').css('width', '104px');
                         $('.send-btn').show();
@@ -89,6 +216,12 @@
                     }
                 }
             }
+        });
+        $('#msg-sound').on('touchstart', function () {
+            $(this).addClass('touch-start').text('松开 结束')
+
+        }).on('touchend', function () {
+            $(this).removeClass('touch-start').text('按住 说话')
         })
 
     </script>

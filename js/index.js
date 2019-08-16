@@ -16,83 +16,35 @@ const vm = new Vue({
     el: '#app',
     data() {
         return {
-            data1: [{
-                img: 'img/qun01.png',
-                count: 5,
-                title: '安徽旅游群',
-                time: '10:25',
-                desc: '[5条]能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？'
-            },
-            {
-                img: 'img/qun01.png',
-                count: 1,
-                title: '安徽旅游群',
-                time: '10:25',
-                desc: '[1条]能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？'
-            },
-            {
-                img: 'img/石任凭.jpg',
-                count: 1,
-                title: '石任凭',
-                time: '10:25',
-                desc: '[1条]割鸡割鸡割鸡'
-            },
-
-            {
-                img: 'img/qun01.png',
-                count: 5,
-                title: '安徽旅游群',
-                time: '10:25',
-                desc: '[5条]能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？'
-            },
-            {
-                img: 'img/qun01.png',
-                count: 1,
-                title: '安徽旅游群',
-                time: '10:25',
-                desc: '[1条]能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？'
-            },
-            {
-                img: 'img/石任凭.jpg',
-                count: 1,
-                title: '石任凭',
-                time: '10:25',
-                desc: '[1条]割鸡割鸡割鸡'
-            },
-            {
-                img: 'img/rabbit.jpg',
-                count: 0,
-                title: '石四凭',
-                time: '10:25',
-                desc: '顽石移动端模仿的微信'
-            }, {
-                img: 'img/qun01.png',
-                count: 5,
-                title: '安徽旅游群',
-                time: '10:25',
-                desc: '[5条]能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？'
-            },
-            {
-                img: 'img/qun01.png',
-                count: 1,
-                title: '安徽旅游群',
-                time: '10:25',
-                desc: '[1条]能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？'
-            },
-            {
-                img: 'img/石任凭.jpg',
-                count: 1,
-                title: '石任凭',
-                time: '10:25',
-                desc: '[1条]割鸡割鸡割鸡'
-            },
-            {
-                img: 'img/rabbit.jpg',
-                count: 0,
-                title: '石四凭',
-                time: '10:25',
-                desc: '顽石移动端模仿的微信'
-            },
+            // 对话列表
+            data1: [
+                {
+                    img: 'img/石任凭.jpg',
+                    count: 1,
+                    title: '石任凭',
+                    time: '10:25',
+                    desc: '[1条]割鸡割鸡割鸡'
+                },
+                {
+                    img: 'img/qun01.png',
+                    count: 1,
+                    title: '安徽旅游群',
+                    time: '10:25',
+                    desc: '[1条]能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？'
+                },
+                {
+                    img: 'img/rabbit.jpg',
+                    count: 0,
+                    title: '石四凭',
+                    time: '10:25',
+                    desc: '顽石移动端模仿的微信'
+                },
+            ],
+            // 朋友列表
+            data2:[
+                {
+                    
+                }
             ]
         }
     },
