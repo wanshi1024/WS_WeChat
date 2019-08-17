@@ -16,7 +16,12 @@
         //mui插件初始化
         mui.ready(function (param) {
             console.log(chat);
-            $('.mui-title').text(chat.title)
+            if (chat == null) {
+                location.href = './../index.html';
+            } else {
+                $('.mui-title').text(chat.title);
+            }
+
         })   
     </script>
 </head>
@@ -65,166 +70,167 @@
         </footer>
         <!-- 九宫格 -->
         <div id="Gallery" class="mui-slider" style="height: 220px; display: none;">
-				<div class="mui-slider-group">
-					<div class="mui-slider-item">
-						<ul class="mui-table-view mui-grid-view ">
-							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-								<a href="#">
-									<span class="mui-icon mui-icon-location"></span>
-									<div class="mui-media-body">location</div>
-								</a>
-							</li>
-							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-								<a href="#">
-									<span class="mui-icon mui-icon-search"></span>
-									<div class="mui-media-body">Search</div>
-								</a>
-							</li>
-							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-								<a href="#">
-									<span class="mui-icon mui-icon-phone"></span>
-									<div class="mui-media-body">Phone</div>
-								</a>
-							</li>
-							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-								<a href="#">
-									<span class="mui-icon mui-icon-gear"></span>
-									<div class="mui-media-body">Setting</div>
-								</a>
-							</li>
-							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-								<a href="#">
-									<span class="mui-icon mui-icon-info"></span>
-									<div class="mui-media-body">about</div>
-								</a>
-							</li>
-							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-								<a href="#">
-									<span class="mui-icon mui-icon-more"></span>
-									<div class="mui-media-body">more</div>
-								</a>
-							</li>
-						</ul>
-					</div>
-					<div class="mui-slider-item">
-						<ul class="mui-table-view mui-grid-view ">
-							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-								<a href="#">
-									<span class="mui-icon mui-icon-search"></span>
-									<div class="mui-media-body">Search</div>
-								</a>
-							</li>
-							
-						</ul>
-					</div>
-				</div>
-				<div class="mui-slider-indicator" style="bottom: -2px;">
-					<div class="mui-indicator mui-active"></div>
-					<div class="mui-indicator"></div>
-				</div>
-    </div>
+            <div class="mui-slider-group">
+                <div class="mui-slider-item">
+                    <ul class="mui-table-view mui-grid-view ">
+                        <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+                            <a href="#">
+                                <span class="mui-icon mui-icon-location"></span>
+                                <div class="mui-media-body">location</div>
+                            </a>
+                        </li>
+                        <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+                            <a href="#">
+                                <span class="mui-icon mui-icon-search"></span>
+                                <div class="mui-media-body">Search</div>
+                            </a>
+                        </li>
+                        <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+                            <a href="#">
+                                <span class="mui-icon mui-icon-phone"></span>
+                                <div class="mui-media-body">Phone</div>
+                            </a>
+                        </li>
+                        <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+                            <a href="#">
+                                <span class="mui-icon mui-icon-gear"></span>
+                                <div class="mui-media-body">Setting</div>
+                            </a>
+                        </li>
+                        <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+                            <a href="#">
+                                <span class="mui-icon mui-icon-info"></span>
+                                <div class="mui-media-body">about</div>
+                            </a>
+                        </li>
+                        <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+                            <a href="#">
+                                <span class="mui-icon mui-icon-more"></span>
+                                <div class="mui-media-body">more</div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="mui-slider-item">
+                    <ul class="mui-table-view mui-grid-view ">
+                        <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+                            <a href="#">
+                                <span class="mui-icon mui-icon-search"></span>
+                                <div class="mui-media-body">Search</div>
+                            </a>
+                        </li>
 
-    <!-- <div id='sound-alert' class="rprogress">
+                    </ul>
+                </div>
+            </div>
+            <div class="mui-slider-indicator" style="bottom: -2px;">
+                <div class="mui-indicator mui-active"></div>
+                <div class="mui-indicator"></div>
+            </div>
+        </div>
+
+        <!-- <div id='sound-alert' class="rprogress">
         <div class="rschedule"></div>
         <div class="r-sigh">!</div>
         <div id="audio_tips" class="rsalert">手指上滑，取消发送</div>
     </div> -->
-    <script src="./../js/vue.min.js"></script>
-    <script>
-        $('#msg-text').on('DOMNodeInserted', function () {
-            console.log(333);
-            
-            let _html = $(this).html();
-            console.log(_html);
-            let str = _html.replace(/(^\s*)|(\s*$)/g, "");
-            if (str.length > 0) {
-                $('.input-text').css('width', '80%');
-                $('.footer-right').css('width', '104px');
-                $('.send-btn').show();
-                $('#more').hide();
-            } else {
-                $('.input-text').css('width', '90%');
-                $('.footer-right').css('width', '80px');
-                $('.send-btn').hide();
-                $('#more').show();
-            }
+        <script src="./../js/vue.min.js"></script>
+        <script>
+            $('#msg-text').on('DOMNodeInserted', function () {
+                console.log(333);
 
-        })
-        new Vue({
-            el: '#app',
-            data() {
-                return {
-                    text: '',
-                    inputType: 1, // 1文字 2语音
-                    chatList: [ //聊天列表
-                        {
-                            sender: 0, // 0 对方  1自己
-                            content: 'hello 欢迎聊天', //聊天内容
-                            headImg: `../${chat.img}`
-                        }
-                    ]
+                let _html = $(this).html();
+                console.log(_html);
+                let str = _html.replace(/(^\s*)|(\s*$)/g, "");
+                if (str.length > 0) {
+                    $('.input-text').css('width', '80%');
+                    $('.footer-right').css('width', '104px');
+                    $('.send-btn').show();
+                    $('#more').hide();
+                } else {
+                    $('.input-text').css('width', '90%');
+                    $('.footer-right').css('width', '80px');
+                    $('.send-btn').hide();
+                    $('#more').show();
                 }
-            },
-            methods: {
-                sendMsg() {
-                    // alert(`(发送功能还未写)你发送的消息为'${this.text}'`);
-                    this.chatList.push({
-                        sender: 1,
-                        content: this.text
-                    })
-                    this.text = '';
-                    var apiUrl = 'http://www.tuling123.com/openapi/api';
-                    $.getJSON('http://www.tuling123.com/openapi/api', {
-                        "key": 'eb043cb39f84453b9140ba7d1f55f682',
-                        "info": "你好",
-                        "userid": Math.random()
-                    }, res => {
-                        console.log(res);
-                        this.chatList.push({
-                            sender: 0,
-                            content: res.text,
-                            headImg: `../${chat.img}`
-                        })
-                    });
 
+            })
+            new Vue({
+                el: '#app',
+                data() {
+                    return {
+                        text: '',
+                        inputType: 1, // 1文字 2语音
+                        chatList: [ //聊天列表
+                            {
+                                sender: 0, // 0 对方  1自己
+                                content: 'hello 欢迎聊天', //聊天内容
+                                headImg: `../${chat.img}`
+                            },
+
+                        ]
+                    }
                 },
-                changeInputType() {
-                    if (this.inputType === 1) {
-                        this.inputType = 2; //切换到语音
-                    } else {
-                        this.inputType = 1; //切换到文字
-                        document.querySelector('#msg-sound').focus()
+                methods: {
+                    sendMsg() {
+                        // alert(`(发送功能还未写)你发送的消息为'${this.text}'`);
+                        this.chatList.push({
+                            sender: 1,
+                            content: this.text
+                        })
+                        this.text = '';
+                        $.getJSON('http://www.tuling123.com/openapi/api', {
+                            "key": 'eb043cb39f84453b9140ba7d1f55f682',
+                            "info": "你好",
+                            "userid": Math.random()
+                        }, res => {
+                            console.log(res);
+                            this.chatList.push({
+                                sender: 0,
+                                content: res.text,
+                                headImg: `../${chat.img}`
+                            })
+                            document.querySelector("#msg-list").scrollIntoView(false)
+                        });
+
+                    },
+                    changeInputType() {
+                        if (this.inputType === 1) {
+                            this.inputType = 2; //切换到语音
+                        } else {
+                            this.inputType = 1; //切换到文字
+                            document.querySelector('#msg-sound').focus()
+                        }
+
                     }
+                },
+                watch: {
+                    // 监听输入框内容
+                    text(v) {
+                        let str = v.replace(/(^\s*)|(\s*$)/g, "");
 
-                }
-            },
-            watch: {
-                // 监听输入框内容
-                text(v) {
-                    let str = v.replace(/(^\s*)|(\s*$)/g, "");
-
-                    if (str.length > 0) {
-                        $('.input-text').css('width', '80%');
-                        $('.footer-right').css('width', '104px');
-                        $('.send-btn').show();
-                        $('#more').hide();
-                    } else {
-                        $('.input-text').css('width', '90%');
-                        $('.footer-right').css('width', '80px');
-                        $('.send-btn').hide();
-                        $('#more').show();
+                        if (str.length > 0) {
+                            $('.input-text').css('width', '80%');
+                            $('.footer-right').css('width', '104px');
+                            $('.send-btn').show();
+                            $('#more').hide();
+                        } else {
+                            $('.input-text').css('width', '90%');
+                            $('.footer-right').css('width', '80px');
+                            $('.send-btn').hide();
+                            $('#more').show();
+                        }
                     }
                 }
-            }
-        });
-        $('#msg-sound').on('touchstart', function () {
-            $(this).addClass('touch-start').text('松开 结束')
+            });
+            $('#msg-sound').on('touchstart', function () {
+                $(this).addClass('touch-start').text('松开 结束')
 
-        }).on('touchend', function () {
-            $(this).removeClass('touch-start').text('按住 说话')
-        })
+            }).on('touchend', function () {
+                $(this).removeClass('touch-start').text('按住 说话')
+            })
 
-    </script>
+        </script>
 
 </body>
 

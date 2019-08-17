@@ -76,7 +76,7 @@
         <!-- 主体 -->
         <div class="mui-content">
             <!-- 聊天列表 -->
-            <div id="tabbar1" class="mui-control-content mui-active">
+            <div id="tabbar1" class="mui-control-content ">
                 <ul class="mui-table-view">
                     <li class="mui-table-view-cell mui-media" v-for="(item,index) in data1" :key="index"
                         @click="clickDialogue(item)">
@@ -195,42 +195,79 @@
                 3
             </div>
             <!-- 我 -->
-            <div id="tabbar4" class="mui-control-content">
+            <div id="tabbar4" class="mui-control-content  mui-active">
                 <ul class="mui-table-view mui-table-view-chevron">
                     <li class="mui-table-view-cell mui-media">
                         <a class="mui-navigate-right" href="#account">
                             <img class="mui-media-object mui-pull-left head-img" id="head-img" src="./img/rabbit.jpg">
                             <div class="mui-media-body">
                                 顽石mua
-                                <p class='mui-ellipsis'>微信号: shisiping000</p>
+                                <p class='mui-ellipsis'>微信号: shisiping000
+                                    <i><img src="img/wode/二维码.png" alt=""></i>
+                                </p>
                             </div>
                         </a>
                     </li>
                 </ul>
                 <ul class="mui-table-view mui-table-view-chevron">
                     <li class="mui-table-view-cell">
-                        <a href="#account" class="mui-navigate-right">支付</a>
+                        <a href="javascript:;">
+                            <img class="mui-media-object mui-pull-left" src="./img/wode/微信支付.png">
+                            <div class="mui-media-body">
+                                <span class="name">支付</span>
+                                <i class="mui-icon mui-icon-arrowright"></i>
+                            </div>
+                        </a>
                     </li>
                 </ul>
                 <ul class="mui-table-view mui-table-view-chevron">
                     <li class="mui-table-view-cell">
-                        <a href="#notifications" class="mui-navigate-right">收藏</a>
+                        <a href="javascript:;">
+                            <img class="mui-media-object mui-pull-left" src="./img/wode/微信收藏.png">
+                            <div class="mui-media-body">
+                                <span class="name"> &nbsp;收藏</span>
+                                <i class="mui-icon mui-icon-arrowright"></i>
+                            </div>
+                        </a>
                     </li>
                     <li class="mui-table-view-cell">
-                        <a href="#privacy" class="mui-navigate-right">相册</a>
+                        <a href="javascript:;">
+                            <img class="mui-media-object mui-pull-left" src="./img/wode/相册.png">
+                            <div class="mui-media-body">
+                                <span class="name"> &nbsp;相册</span>
+                                <i class="mui-icon mui-icon-arrowright"></i>
+                            </div>
+                        </a>
                     </li>
                     <li class="mui-table-view-cell">
-                        <a href="#general" class="mui-navigate-right">卡包</a>
+                        <a href="javascript:;">
+                            <img class="mui-media-object mui-pull-left" src="./img/wode/卡包.png">
+                            <div class="mui-media-body">
+                                <span class="name">卡包</span>
+                                <i class="mui-icon mui-icon-arrowright"></i>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="mui-table-view-cell">
+                        <a href="javascript:;">
+                            <img class="mui-media-object mui-pull-left" src="./img/wode/微信表情.png">
+                            <div class="mui-media-body">
+                                <span class="name"> &nbsp;表情</span>
+                                <i class="mui-icon mui-icon-arrowright"></i>
+                            </div>
+                        </a>
                     </li>
                 </ul>
+
                 <ul class="mui-table-view mui-table-view-chevron">
                     <li class="mui-table-view-cell">
-                        <a href="#about" class="mui-navigate-right">表情 </a>
-                    </li>
-                </ul>
-                <ul class="mui-table-view mui-table-view-chevron">
-                    <li class="mui-table-view-cell">
-                        <a href="#about" class="mui-navigate-right">设置</a>
+                        <a href="javascript:;">
+                            <img class="mui-media-object mui-pull-left" src="./img/wode/设置.png">
+                            <div class="mui-media-body">
+                                <span class="name">设置</span>
+                                <i class="mui-icon mui-icon-arrowright"></i>
+                            </div>
+                        </a>
                     </li>
                 </ul>
 
