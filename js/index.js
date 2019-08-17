@@ -40,12 +40,8 @@ const vm = new Vue({
                     desc: '顽石移动端模仿的微信'
                 },
             ],
-            // 朋友列表
-            data2:[
-                {
-                    
-                }
-            ]
+            // 通讯录下标列表
+            indexListStr:'☆↑ABCDEFGHIJKLMNOPQRSTUVWXYZ'
         }
     },
 

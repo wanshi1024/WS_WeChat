@@ -66,16 +66,16 @@
 }
 #tabbar2 .mui-table-view img {
   border-radius: 5px;
-  height: 34px;
+  height: 22px;
   margin-top: 2px;
   margin-left: 10px;
 }
 #tabbar2 .mui-table-view .mui-media-body {
-  height: 42px;
+  height: 30px;
 }
 #tabbar2 .mui-table-view .mui-media-body span.name {
-  line-height: 42px;
-  font-size: 1.2em;
+  line-height: 2em;
+  font-size: 16px;
   margin-left: 0.4em;
 }
 #tabbar2 .mui-table-view .mui-indexed-list-group {
@@ -83,6 +83,66 @@
   font-size: 12px;
   margin-top: -2px;
   padding-bottom: 2px;
+}
+#tabbar2 .mui-indexed-list-bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: fixed;
+  right: 0;
+  top: 30px;
+  height: 34rem;
+  padding: 0 8px;
+}
+#tabbar2 .mui-indexed-list-bar a {
+  font-size: 12px;
+  text-align: center;
+  color: #4C4C4C;
+  height: 1rem;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  line-height: 15px;
+}
+#tabbar2 .mui-indexed-list-bar .active {
+  background-color: #08C161;
+  color: white;
+}
+#tabbar2 .mui-indexed-list-alert {
+  position: absolute;
+  z-index: 20;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 80px;
+  height: 80px;
+  left: 50%;
+  top: 50%;
+  margin-left: -40px;
+  margin-top: -40px;
+  border-radius: 40px;
+  text-align: center;
+  line-height: 80px;
+  font-size: 35px;
+  color: #fff;
+  display: none;
+}
+#tabbar2 .mui-indexed-list-alert.active {
+  display: block;
+}
+#tabbar3 ul img.mui-media-object {
+  height: 20px;
+}
+#tabbar3 ul .mui-media-body {
+  margin-top: 1px;
+  padding-left: 10px;
+}
+#tabbar3 ul i {
+  position: absolute;
+  right: 12px;
+  font-size: 18px;
+  color: #bbb;
+}
+#tabbar3 ul:nth-of-type(2) {
+  margin: 10px 0;
 }
 #tabbar4 ul:first-child li a {
   padding: 16px 20px;
