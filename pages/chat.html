@@ -136,25 +136,7 @@
     </div> -->
         <script src="./../js/vue.min.js"></script>
         <script>
-            $('#msg-text').on('DOMNodeInserted', function () {
-                console.log(333);
-
-                let _html = $(this).html();
-                console.log(_html);
-                let str = _html.replace(/(^\s*)|(\s*$)/g, "");
-                if (str.length > 0) {
-                    $('.input-text').css('width', '80%');
-                    $('.footer-right').css('width', '104px');
-                    $('.send-btn').show();
-                    $('#more').hide();
-                } else {
-                    $('.input-text').css('width', '90%');
-                    $('.footer-right').css('width', '80px');
-                    $('.send-btn').hide();
-                    $('#more').show();
-                }
-
-            })
+           
             new Vue({
                 el: '#app',
                 data() {
@@ -189,8 +171,8 @@
                                 sender: 0,
                                 content: res.text,
                                 headImg: `../${chat.img}`
-                            })
-                            document.querySelector("#msg-list").scrollIntoView(false)
+                            });
+                            document.querySelector("#msg-list").scrollIntoView(false);
                         });
 
                     },
