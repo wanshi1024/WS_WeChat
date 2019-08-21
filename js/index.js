@@ -39,6 +39,13 @@ const vm = new Vue({
                     time: '10:25',
                     desc: '顽石移动端模仿的微信'
                 },
+                {
+                    img: 'img/jqr.jpg',
+                    count: 0,
+                    title: '聊天机器人',
+                    time: '10:25',
+                    desc: '小哥哥小姐姐来聊天啊'
+                },
             ],
             // 通讯录下标列表
             indexListStr:'☆↑ABCDEFGHIJKLMNOPQRSTUVWXYZ'
